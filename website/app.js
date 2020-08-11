@@ -1,5 +1,5 @@
 /* Global Variables */
-let baseURL = 'http://api.openweathermap.org/data/2.5/weather?q='
+let baseURL = 'https://api.openweathermap.org/data/2.5/weather?q='
 let apiKey= '&APPID=3d42d650d5ee6afd9dfb820e0f1d4ff4&units=metric'
 // Create a new date instance dynamically with 
 let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
