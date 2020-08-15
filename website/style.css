@@ -72,16 +72,19 @@ input {
     display: none;
 }
 .entry{
-    justify-content: center;
+    justify-content: start;
     margin: 70px 0px 20px;
 }
 .entry .cities{
     list-style-type: none;
+    display: grid;
+    grid-gap: 32px 20px;
+    grid-template-columns: repeat(4, 1fr);
 }
 .entry .city{
-    width: 100%;
+    width: 80%;
     position: relative;
-    padding: 25% 20% 20% 20%;
+    padding: 25px 20px 20px 20px;
     border-radius: 20px;
     background: var(--text_light);
     color: var(--text_med);
@@ -187,7 +190,11 @@ button:focus {
         font-size: 200%;
     }
     .entry .city{
-        padding: 15% 15% 10% 10%;
+        width: 100%;
+        padding: 20px 20px 15px 15px;
+    }
+    .entry .cities{
+        grid-template-columns: repeat(1, 1fr);
     }
     .entry{
      float: left;
@@ -199,6 +206,14 @@ button:focus {
 }
 @media screen and (max-width:320px){
     .entry .city{
-        padding: 10% 5% 5% 5%;
+        padding: 10px 5px 5px 5px;
+    }
+    .entry .cities{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media screen and (min-width:701px) and (max-width:1040px){
+    .entry .cities{
+        grid-template-columns: repeat(3, 1fr);
     }
 }

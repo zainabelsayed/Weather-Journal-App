@@ -64,15 +64,32 @@ const updateUI = async() => {// updating the ui with the new data from user and 
         const allData = await request.json()
         console.log(allData)
         const icon = `https://openweathermap.org/img/wn/${allData.weather[0]["icon"]}@2x.png`;// getting the weather icons from openweathermap web app
-        
+        const li = document.createElement('li')
         document.getElementsByClassName('entry')[0].classList.remove('toggle')// removeing the toggle class to display the weather card
+        const cities=document.querySelector('.cities')
+        li.classList.add('city')
+        li.innerHTML=`<div id = "entryHolder">
+        <h2 class="city-name">
+          <span class="name">${allData.name}</span>
+          <sup class="sys">${allData.sys.country}</sup>
+        </h2>
+        <div class="date" id = "date"><span>${day}</span>&nbsp;${allData.date}</div> 
+        <div class="content" id = "content">${allData.feelings}</div>
+        <div class="temp" id ="temp">${allData.temp}<sup>°C</sup></div>
+          <figure>
+            <img class="city-icon" src=${icon}>
+            <figcaption class="weather">${allData.weather[0]['description']}</figcaption>
+          </figure>
+    </div>`
+        cities.appendChild(li)
+        /*document.getElementsByClassName('entry')[0].classList.remove('toggle')// removeing the toggle class to display the weather card
         document.getElementsByClassName('name')[0].innerHTML= allData.name// adding the city name to ui
         document.getElementsByClassName('sys')[0].innerHTML= allData.sys.country// adding the country name to ui
         document.getElementsByClassName('date')[0].innerHTML= `<span>${day}</span>&nbsp;`+allData.date// adding the date to ui
         document.getElementsByClassName('temp')[0].innerHTML= allData.temp+`<sup>°C</sup>`// adding the temp to ui
         document.getElementsByClassName('content')[0].innerHTML=allData.feelings// adding the user's feelings to ui
         document.getElementsByClassName('city-icon')[0].src=icon// adding the weather icon to ui
-        document.getElementsByClassName('weather')[0].innerHTML=allData.weather[0]['description']// adding theweather descreption to ui
+        document.getElementsByClassName('weather')[0].innerHTML=allData.weather[0]['description']// adding theweather descreption to ui*/
     }catch(error){
         document.getElementsByClassName('error')[0].innerHTML='Please Enter a valid Zip Code!'// catching errors
         console.log('errors',error)
