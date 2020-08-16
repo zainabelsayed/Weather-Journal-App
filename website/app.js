@@ -10,6 +10,7 @@ let day= days[d.getDay()];// generate the day of the week
 document.getElementById('generate').addEventListener('click',getData)
 
 function getData (e) {
+    e.preventDefault();
     document.getElementsByClassName('error')[0].innerHTML=''//reset the error message content
     const zipCode = document.getElementById('zip').value// getting the zip code or the city name value
     const feelings = document.getElementById('feelings').value// getting the feeling value
