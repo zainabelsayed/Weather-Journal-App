@@ -39,5 +39,6 @@ app.get('/all', sendData)
 
  function sendData(req,res) {// sending data to the projectData object
     res.send(projectData)
+    projectData={}
  }
  
