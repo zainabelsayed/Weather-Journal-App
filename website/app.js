@@ -61,6 +61,8 @@ const postData = async (url='', data={})=>{// posting new data to server
 const updateUI = async() => {// updating the ui with the new data from user and api
     const request = await fetch('/all')
     try{
+        document.getElementById('zip').value=''
+        document.getElementById('feelings').value=''
         const allData = await request.json()
         console.log(allData)
         const icon = `https://openweathermap.org/img/wn/${allData.weather[0]["icon"]}@2x.png`;// getting the weather icons from openweathermap web app
