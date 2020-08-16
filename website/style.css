@@ -204,6 +204,9 @@ button:focus {
         justify-content: center;
         position: relative;
     }
+    .entry figure{
+    float: right;
+}
 }
 @media screen and (max-width:320px){
     .entry .city{
