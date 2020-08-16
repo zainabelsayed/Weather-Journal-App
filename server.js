@@ -21,13 +21,6 @@ function listening (){
     console.log(`server running on ${port}`)
 }
 
-
-app.get('/all', sendData)
-
- function sendData(req,res) {// sending data to the projectData object
-    res.send(projectData)
- }
-
  app.post('/add', callBack)
 
  function callBack(req,res){
@@ -42,5 +35,9 @@ app.get('/all', sendData)
    res.send(projectData)
    console.log(projectData)
  }
+app.get('/all', sendData)
 
+ function sendData(req,res) {// sending data to the projectData object
+    res.send(projectData)
+ }
  
