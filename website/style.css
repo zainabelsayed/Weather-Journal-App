@@ -203,7 +203,6 @@ button:focus {
     }
     .entry figure{
     justify-content: center;
-    margin-right:10px;
 }
 }
 @media screen and (max-width:320px){
