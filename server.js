@@ -34,11 +34,11 @@ function listening (){
    }
    res.send(projectData)
    console.log(projectData)
+   projectData={}
  }
 app.get('/all', sendData)
 
  function sendData(req,res) {// sending data to the projectData object
     res.send(projectData)
-    projectData={}
  }
  
