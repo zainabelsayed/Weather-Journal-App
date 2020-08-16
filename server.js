@@ -24,7 +24,6 @@ function listening (){
  app.post('/add', callBack)
 
  function callBack(req,res){
-  projectData={}
    projectData = {// adding new data to the project data
         date: req.body.date,
         temp: req.body.temp,
