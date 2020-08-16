@@ -134,6 +134,7 @@ input {
     color: var(--text_light);
     background: var(--orange);
 }
+
 .entry .city-icon{
     justify-content:center;
     margin-top: 10px;
