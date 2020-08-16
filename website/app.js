@@ -10,7 +10,7 @@ let day= days[d.getDay()];// generate the day of the week
 document.getElementById('generate').addEventListener('click',getData)
 
 function getData (e) {
-    e.preventDefault();
+    e.preventDefault()
     document.getElementsByClassName('error')[0].innerHTML=''//reset the error message content
     const zipCode = document.getElementById('zip').value// getting the zip code or the city name value
     const feelings = document.getElementById('feelings').value// getting the feeling value
@@ -22,7 +22,7 @@ function getData (e) {
             console.log( name, sys, weather )
             postData('/add',{date:newDate, temp:Math.round((data.main.temp)),
                             feelings: feelings, name:data.name, sys:data.sys, weather: data.weather})//posting data to server
-            updateUI()
+            //updateUI()
         }
     ).catch((error)=>{
         document.getElementsByClassName('error')[0].innerHTML='Please Enter a valid Zip Code!'
@@ -51,15 +51,38 @@ const postData = async (url='', data={})=>{// posting new data to server
         body:JSON.stringify(data)
     })
     try{
-        const newData = await response.json()
-        console.log(newData)
-        return newData
+        const allData = await response.json()
+        console.log(allData)
+        document.getElementById('zip').value=''
+        document.getElementById('feelings').value=''
+        /*const allData = await request.json()
+        console.log(allData)*/
+        const icon = `https://openweathermap.org/img/wn/${allData.weather[0]["icon"]}@2x.png`;// getting the weather icons from openweathermap web app
+        const li = document.createElement('li')
+        document.getElementsByClassName('entry')[0].classList.remove('toggle')// removeing the toggle class to display the weather card
+        const cities=document.querySelector('.cities')
+        li.classList.add('city')
+        li.innerHTML=`<div id = "entryHolder">
+        <h2 class="city-name">
+          <span class="name">${allData.name}</span>
+          <sup class="sys">${allData.sys.country}</sup>
+        </h2>
+        <div class="date" id = "date"><span>${day}</span>&nbsp;${allData.date}</div> 
+        <div class="content" id = "content">${allData.feelings}</div>
+        <div class="temp" id ="temp">${allData.temp}<sup>°C</sup></div>
+          <figure>
+            <img class="city-icon" src=${icon}>
+            <figcaption class="weather">${allData.weather[0]['description']}</figcaption>
+          </figure>
+    </div>`
+        cities.appendChild(li)
     }catch(error){
+        document.getElementsByClassName('error')[0].innerHTML='Please Enter a valid Zip Code!'// catching errors
         console.log('errors',error)
     }
 }
 
-const updateUI = async() => {// updating the ui with the new data from user and api
+/*const updateUI = async() => {// updating the ui with the new data from user and api
     const request = await fetch('/all')
     try{
         document.getElementById('zip').value=''
@@ -89,4 +112,4 @@ const updateUI = async() => {// updating the ui with the new data from user and 
         document.getElementsByClassName('error')[0].innerHTML='Please Enter a valid Zip Code!'// catching errors
         console.log('errors',error)
     }
-}
+}*/
